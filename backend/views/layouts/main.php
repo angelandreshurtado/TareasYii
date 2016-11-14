@@ -21,11 +21,12 @@ AppAsset::register($this);
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
+    <link href='http://fonts.googleapis.com/css?family=Raleway:200,300,400,500,600,700,800' rel='stylesheet' type='text/css'>
 </head>
 <body>
 <?php $this->beginBody() ?>
 
-<div class="wrap">
+<div class="wrap" style="background-image:url(<?php echo Yii::$app->request->baseUrl; ?>/images/fondo.png);">
     <?php
     NavBar::begin([
         'brandLabel' => 'YouBlog',
@@ -39,7 +40,8 @@ AppAsset::register($this);
     ];
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Ingresar', 'url' => ['/user/security/login']];
-    } else {      
+    } else {
+		$menuItems[] = ['label' => 'Reveals Presentación', 'url' => ['/../../frontend/web/reveals/']];
         $menuItems[] = [
             'label' => 'Entradas',
             'items' => [
@@ -91,21 +93,34 @@ AppAsset::register($this);
         'items' => $menuItems,
     ]);
     NavBar::end();
+    
     ?>
 
     <div class="container">
-        <?= Breadcrumbs::widget([
-            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-        ]) ?>
-        <?= Alert::widget() ?>
-        <?= $content ?>
-    </div>
+                <?=
+                Breadcrumbs::widget([
+                    'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+                ])
+                ?>
+                <?= Alert::widget() ?>
+            </div>                
+			<?= $content ?>
+
 </div>
 
-<footer class="footer">
+<footer class="footer" style="background-color: #fff;">
     <div class="container">
-        <center><p>&copy; Andrés Hurtado <?= date('Y') ?></p></center>
-    </div>
+                <section id="credits" class="text-center">
+                    <span class="social wow zoomIn">
+                        <a href="#"><i class="fa fa-facebook"></i></a>
+                        <a href="#"><i class="fa fa-twitter"></i></a>
+                        <a href="#"><i class="fa fa-skype"></i></a>
+                        <a href="#"><i class="fa fa-linkedin"></i></a>
+                        <a href="#"><i class="fa fa-pinterest"></i></a>
+                        <a href="#"><i class="fa fa-google-plus"></i></a>
+                    </span>
+                <center><p>&copy; Andrés Hurtado <?= date('Y') ?></p></center></section>
+            </div>
 </footer>
 
 <?php $this->endBody() ?>

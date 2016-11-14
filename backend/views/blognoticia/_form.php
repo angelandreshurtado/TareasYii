@@ -8,7 +8,7 @@ use backend\controllers\BlognoticiaController;
 /* @var $model app\models\Blognoticia */
 /* @var $form yii\widgets\ActiveForm */
 ?>
-
+<div id="two" class="container">
 <div class="blognoticia-form">
 
     <?php $form = ActiveForm::begin(); ?>
@@ -29,4 +29,5 @@ use backend\controllers\BlognoticiaController;
 
 <?php ActiveForm::end(); ?>
 
+</div>
 </div>

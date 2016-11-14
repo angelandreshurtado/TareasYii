@@ -9,6 +9,7 @@ use yii\grid\GridView;
 $this->title = 'Blog de Noticias';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+<div id="two" class="container">
 <div class="blognoticia-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
@@ -31,4 +32,5 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
+</div>
 </div>

@@ -10,6 +10,7 @@ $this->title = $model->tituloNoticia;
 $this->params['breadcrumbs'][] = ['label' => 'Noticia', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+<div id="two" class="container">
 <div class="blognoticia-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
@@ -37,4 +38,5 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]) ?>
 
+</div>
 </div>
