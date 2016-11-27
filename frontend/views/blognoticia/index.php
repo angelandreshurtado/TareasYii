@@ -4,21 +4,23 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
+/* @var $searchModel app\models\BlognoticiaSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Blog de Noticias';
+$this->title = 'Blognoticias';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div id="two" class="container">
 <div class="blognoticia-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
+    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Crear Noticia', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Blognoticia', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
+        'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
@@ -27,10 +29,9 @@ $this->params['breadcrumbs'][] = $this->title;
             'contenidoNoticia:ntext',
             'estado',
             'fechaCreacion',
-            'authNoticia',
+            // 'authNoticia',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
-</div>
 </div>

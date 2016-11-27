@@ -225,4 +225,8 @@ class SiteController extends Controller
             'model' => $model,
         ]);
     }
+    
+    public function actionFeed(){
+        return $this->render('feed');
+    }
 }

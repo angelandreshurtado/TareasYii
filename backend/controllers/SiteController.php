@@ -21,11 +21,11 @@ class SiteController extends Controller {
             'access' => [
                 'class' => AccessControl::className(),
                 'rules' => [
-                        [
+                    [
                         'actions' => ['login', 'error'],
                         'allow' => true,
                     ],
-                        [
+                    [
                         'actions' => ['logout', 'index'],
                         'allow' => true,
                         'roles' => ['@'],
@@ -92,8 +92,12 @@ class SiteController extends Controller {
         return $this->goHome();
     }
 
-    public function actionBackend()
-    {
+    public function actionBackend() {
         return $this->redirect(Yii::$app->request->baseUrl . '../../../frontend/web/');
     }
+
+    public function actionFeed() {
+        return $this->render('feed');
+    }
+
 }

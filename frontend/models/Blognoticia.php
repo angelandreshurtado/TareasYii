@@ -14,21 +14,19 @@ use Yii;
  * @property string $fechaCreacion
  * @property string $authNoticia
  */
-class Blognoticia extends \yii\db\ActiveRecord
-{
+class Blognoticia extends \yii\db\ActiveRecord {
+
     /**
      * @inheritdoc
      */
-    public static function tableName()
-    {
+    public static function tableName() {
         return 'blognoticia';
     }
 
     /**
      * @inheritdoc
      */
-    public function rules()
-    {
+    public function rules() {
         return [
             [['tituloNoticia', 'contenidoNoticia', 'estado', 'fechaCreacion', 'authNoticia'], 'required'],
             [['contenidoNoticia'], 'string'],
@@ -42,15 +40,28 @@ class Blognoticia extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
-    public function attributeLabels()
-    {
+    public function attributeLabels() {
         return [
             'ID' => 'ID',
-            'tituloNoticia' => 'Titulo Noticia',
-            'contenidoNoticia' => 'Contenido Noticia',
+            'tituloNoticia' => 'Titulo',
+            'contenidoNoticia' => 'Contenido',
             'estado' => 'Estado',
-            'fechaCreacion' => 'Fecha Creación',
+            'fechaCreacion' => 'Fecha Creacion',
             'authNoticia' => 'Autor',
         ];
     }
+
+    public function fields() {
+        return [
+            'ID',
+            'title' => 'tituloNoticia',
+            'body' => 'contenidoNoticia',
+            'status' => function(Blognoticia $model) {
+                return ($model->estado == '1' ? 'Publicada' : 'Borrador');
+            },
+            'date' => 'fechaCreacion',
+            'auth' => 'authNoticia',
+        ];
+    }
+
 }

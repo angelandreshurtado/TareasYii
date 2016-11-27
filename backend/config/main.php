@@ -1,9 +1,7 @@
 <?php
+
 $params = array_merge(
-    require(__DIR__ . '/../../common/config/params.php'),
-    require(__DIR__ . '/../../common/config/params-local.php'),
-    require(__DIR__ . '/params.php'),
-    require(__DIR__ . '/params-local.php')
+        require(__DIR__ . '/../../common/config/params.php'), require(__DIR__ . '/../../common/config/params-local.php'), require(__DIR__ . '/params.php'), require(__DIR__ . '/params-local.php')
 );
 
 return [
@@ -16,11 +14,11 @@ return [
         'request' => [
             'csrfParam' => '_csrf-backend',
         ],
-        /*'user' => [
-            'identityClass' => 'common\models\User',
-            'enableAutoLogin' => true,
-            'identityCookie' => ['name' => '_identity-backend', 'httpOnly' => true],
-        ],*/
+        /* 'user' => [
+          'identityClass' => 'common\models\User',
+          'enableAutoLogin' => true,
+          'identityCookie' => ['name' => '_identity-backend', 'httpOnly' => true],
+          ], */
         'session' => [
             // this is the name of the session cookie used for login on the backend
             'name' => 'advanced-frontend',
@@ -37,24 +35,28 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-        
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                ['class' => 'yii\rest\UrlRule',
+                    'pluralize' => false,
+                    'controller' => 'api/default'
+                ],
             ],
         ],
-        
     ],
-	'modules' => [
-    'user' => [
-        'class' => 'dektrium\user\Module',
-        'enableUnconfirmedLogin' => true,
-        'confirmWithin' => 21600,
-        'cost' => 12,
-        'admins' => ['admin'],
-
+    'modules' => [
+        'user' => [
+            'class' => 'dektrium\user\Module',
+            'enableUnconfirmedLogin' => true,
+            'confirmWithin' => 21600,
+            'cost' => 12,
+            'admins' => ['admin'],
+        ],
+        'api' => [
+            'class' => 'app\modules\api\ApiModule',
+        ],
     ],
-	],
     'params' => $params,
 ];
