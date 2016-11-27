@@ -23,7 +23,7 @@ $longitud = count($posts);
                             ?>
                             <div class="col-md-4 col-sm-6">
                                 <div class="service-box wow flipInY" data-wow-duration="1.5s" data-wow-delay="0.1s">
-                                    <span class="glyphicon glyphicon-tower"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
                                     <h3><?php echo $titulo ?></h3>
                                     <p>
                                         <?php echo $contenido ?>
